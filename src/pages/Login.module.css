@@ -1,0 +1,107 @@
+.loginPage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginWrap {
+  background: #ffffff;
+  width: 350px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #333;
+  padding: 20px;
+}
+.loginWrap .logo {
+  display: flex;
+  justify-content: center;
+}
+.loginWrap .logo img {
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+.loginWrap .form {
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginWrap .form button a {
+  font-size: 16px;
+  text-decoration: none;
+}
+.loginWrap .form h1 {
+  padding: 0 30px;
+
+  font-size: 16px;
+  color: rgb(8, 8, 8);
+}
+.form > p {
+  padding: 30px 30px;
+  font-size: 12px;
+}
+.loginWrap .form h4 {
+  white-space: normal;
+  font-size: 10px;
+  font-weight: 400;
+  text-decoration: center;
+  color: rgb(68, 68, 68);
+}
+.inputBtnWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginWrap .form input[type="text"],
+button {
+  width: 80%;
+  margin-bottom: 25px;
+  height: 40px;
+  color: black;
+  border-radius: 5px;
+  outline: 0;
+}
+.loginWrap .form input[type="text"] {
+  border: 1px solid #bbb;
+  font-size: 14px;
+}
+
+.link {
+  font-family: "iransans", sans-serif;
+  color: #fff;
+}
+.loginWrap .form input[type="text"]:focus {
+  border: 1px solid #3498db;
+}
+.loginWrap .form button {
+  background: #fac003;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-weight: 200;
+  box-shadow: 1px 1px 5px rgb(122, 122, 122);
+  cursor: pointer;
+  transition: box-shadow 0.1s ease;
+}
+.loginWrap .form button:hover {
+  background: #e7b203;
+  box-shadow: 0 0 0 0;
+}
+.loginWrap .form button:active {
+  box-shadow: 1px 1px 7px #222;
+}
+.loginWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.inputBtnWrapper > p {
+  margin-bottom: 2rem;
+  cursor: pointer;
+}

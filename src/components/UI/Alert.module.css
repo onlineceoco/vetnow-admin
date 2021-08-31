@@ -1,0 +1,21 @@
+.alert {
+  margin: 5px 0;
+}
+
+.danger {
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(236, 15, 15, 0.5);
+  color: #fff;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+
+.success {
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(59, 236, 15, 0.5);
+  color: rgb(36, 35, 35);
+  border-radius: 7px;
+  font-size: 1rem;
+}

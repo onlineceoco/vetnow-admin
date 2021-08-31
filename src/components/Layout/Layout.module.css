@@ -1,0 +1,8 @@
+#sidebar {
+  padding: 0 !important;
+}
+.mainArea {
+  padding: 0 80px;
+  height: 100vh;
+  width: calc(100% - 50px);
+}

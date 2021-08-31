@@ -1,0 +1,89 @@
+.sidebar {
+  color: rgb(33, 43, 54);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: none;
+  background-image: none;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 0 auto;
+  z-index: 1200;
+  position: fixed;
+  top: 0px;
+  outline: 0px;
+  right: 0px;
+  border-right: 1px solid rgba(145, 158, 171, 0.24);
+  width: 270px;
+  background-color: rgb(255, 255, 255);
+  border-left: 1px solid rgb(228, 225, 225);
+}
+.logo {
+  text-align: center;
+  padding: 2rem 0;
+  font-weight: 900;
+  font-size: 3rem;
+  color: rgb(199, 240, 199);
+}
+.navLink {
+  background-color: white;
+  line-height: 2.9;
+  display: flex;
+  padding: 2px 3.7rem;
+  color: rgb(99, 115, 129);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.navLink:hover {
+  background-color: rgb(236, 237, 238);
+}
+
+.navLink span {
+  display: flex;
+  align-items: center;
+}
+.activeLink {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  background-color: rgb(199, 240, 199) !important;
+  z-index: 1;
+}
+.activeLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  z-index: 2;
+  background-color: rgb(155, 194, 155);
+  height: inherit;
+  border-radius: 10px;
+}
+.navIcons {
+  color: rgb(129, 134, 139);
+  font-size: 1.4rem;
+  margin-left: 1.2rem;
+  margin-bottom: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(145, 158, 171, 0.5);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

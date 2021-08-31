@@ -1,0 +1,14 @@
+.timer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timerText {
+  margin-bottom: 20px;
+}
+.timerBtn {
+  font-family: "iransans" !important;
+  width: 40%;
+}

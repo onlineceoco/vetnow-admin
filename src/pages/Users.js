@@ -73,7 +73,7 @@ function Comments() {
         </Table>
         <div className={classes.paginate}>
           <Pagination
-            // count={Math.ceil(users && users.length / 10)}
+            count={Math.ceil(users && users.length / 10)}
             page={page}
             color="primary"
             siblingCount={1}

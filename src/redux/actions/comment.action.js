@@ -3,7 +3,6 @@ import axiosInstance from "../../helpers/axios";
 import { commentConstants } from "./constatns";
 
 export const getComments = page => {
-  console.log(page);
   return async dispatch => {
     try {
       const res = await axiosInstance.get(

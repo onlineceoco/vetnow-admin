@@ -14,6 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link, NavLink } from "react-router-dom";
 import { Button, Grid } from "@material-ui/core";
@@ -97,7 +98,6 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-
             <ListItemText primary="محصولات" />
           </ListItem>
         </NavLink>
@@ -106,8 +106,15 @@ function ResponsiveDrawer(props) {
             <ListItemIcon>
               <ChatBubbleOutlineIcon />
             </ListItemIcon>
-
             <ListItemText primary="کامنت ها" />
+          </ListItem>
+        </NavLink>
+        <NavLink style={{ color: "rgba(0, 0, 0, 0.54)" }} to="/users">
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary="کاربران" />
           </ListItem>
         </NavLink>
       </List>
@@ -148,7 +155,7 @@ function ResponsiveDrawer(props) {
                 color="inherit"
                 style={{ fontSize: "1rem" }}
               >
-                سلام
+                خروج
               </Button>
             </Grid>
           </Grid>

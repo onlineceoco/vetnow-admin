@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Alert.module.css";
 function Alert({ error, kind }) {
   const errors = error.split(".");
-  console.log(errors);
   return (
     <>
       {errors.map(error => {

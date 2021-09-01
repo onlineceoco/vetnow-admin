@@ -148,7 +148,7 @@ function ResponsiveDrawer(props) {
                 color="inherit"
                 style={{ fontSize: "1rem" }}
               >
-                خروج
+                سلام
               </Button>
             </Grid>
           </Grid>

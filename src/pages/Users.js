@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getComments } from "../redux/actions/comment.action";
 import { Pagination } from "@material-ui/lab";
 import { getAllUsers } from "../redux/actions/user.action";
+import UpdateUserModal from "../components/UI/updateUserModal/UpdateUserModal";
 
 const useStyles = makeStyles({
   tableContainer: {
@@ -28,14 +29,26 @@ const useStyles = makeStyles({
   },
 });
 
-function Comments() {
+function Users() {
+  const [openModal, setOpenModal] = useState(false);
+  const [doctorDocId, setDoctorDocId] = useState(null);
   const [page, setPage] = useState(1);
   const classes = useStyles();
   const dispatch = useDispatch();
   const { users } = useSelector(state => state.user);
+
   useEffect(() => {
     dispatch(getAllUsers(page));
   }, []);
+
+  const openModalHandler = id => {
+    setDoctorDocId(id);
+    setOpenModal(true);
+  };
+
+  const closeModalHandler = () => {
+    setOpenModal(false);
+  };
 
   const handlePageChange = (e, value) => {
     setPage(value);
@@ -64,7 +77,10 @@ function Comments() {
           <TableBody>
             {users &&
               users.map(user => (
-                <TableRow key={user._id}>
+                <TableRow
+                  key={user._id}
+                  onClick={() => openModalHandler(user._id)}
+                >
                   <TableCell>{user.phone}</TableCell>
                   <TableCell>{turnToFarsi(user.role)}</TableCell>
                 </TableRow>
@@ -82,8 +98,13 @@ function Comments() {
           />
         </div>
       </TableContainer>
+      <UpdateUserModal
+        doctorDocId={doctorDocId}
+        openModalHandler={openModal}
+        closeModalHandler={closeModalHandler}
+      />
     </Layout>
   );
 }
 
-export default Comments;
+export default Users;

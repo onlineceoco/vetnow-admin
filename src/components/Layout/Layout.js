@@ -19,7 +19,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link, NavLink } from "react-router-dom";
 import { Button, Grid } from "@material-ui/core";
 import { logout } from "../../redux/actions/auth.action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -68,7 +68,6 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const dispatch = useDispatch();
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };

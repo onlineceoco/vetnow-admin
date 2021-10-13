@@ -7,7 +7,12 @@ import { usersConstants } from "./constatns";
 export const getAllUsers = page => {
   return async dispatch => {
     try {
-      const res = await axiosInstance.get(`users/get-users?page=${page || 1}`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${api}users/get-users?page=${page || 1}`, {
+        headers: {
+          Authorization: token && `Bearer ${token}`,
+        },
+      });
       dispatch({
         type: usersConstants.GET_ALL_USERS_SUCCESS,
         payload: res.data.data,

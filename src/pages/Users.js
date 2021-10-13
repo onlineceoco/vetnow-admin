@@ -79,7 +79,9 @@ function Users() {
               users.map(user => (
                 <TableRow
                   key={user._id}
-                  onClick={() => openModalHandler(user._id)}
+                  onClick={() => {
+                    if (user.role === "doctor") openModalHandler(user._id);
+                  }}
                 >
                   <TableCell>{user.phone}</TableCell>
                   <TableCell>{turnToFarsi(user.role)}</TableCell>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, makeStyles, Modal } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "../../../redux/actions/product.action";
-import Alert from "../Alert";
+  import Alert from "../Alert";
 import { Close } from "@material-ui/icons";
 import {
   getSingleDoctor,
@@ -69,6 +68,9 @@ const styles = makeStyles(theme => {
 });
 
 function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [job, setJob] = useState("");
   const [graduate, setGraduate] = useState("");
   const [experience, setExperience] = useState("");
   const [doctorDescreption, setDoctorDescreption] = useState("");
@@ -88,6 +90,8 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
     e.preventDefault();
     const data = Object.assign(
       {},
+      !name ? null : { name },
+      !lastName ? null : { lastName },
       !graduate ? null : { graduate },
       !experience ? null : { experience },
       !doctorDescreption ? null : { doctorDescreption },
@@ -102,9 +106,47 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
       <Card className={classes.card}>
         <CardContent>
           <h1>اطلاعات دکتر</h1>
+          <label htmlFor="name">نام دکتر</label>
+          <input
+            type="text"
+            id="name"
+            onChange={e => setName(e.target.value)}
+            value={name}
+            placeholder={
+              singleDoctorState && singleDoctorState.name
+                ? singleDoctorState.name
+                : "نام دکتر"
+            }
+          />
           <form onSubmit={submitHandler}>
+            <label htmlFor="lastName">نام خانوادگی دکتر</label>
+            <input
+              type="text"
+              id="lastName"
+              onChange={e => setLastName(e.target.value)}
+              value={lastName}
+              placeholder={
+                singleDoctorState && singleDoctorState.lastName
+                  ? singleDoctorState.lastName
+                  : "نام خانوادگی دکتر"
+              }
+            />
+            <label htmlFor="job">تخصص</label>
+            <input
+              type="text"
+              id="job"
+              onChange={e => setJob(e.target.value)}
+              value={job}
+              placeholder={
+                singleDoctorState && singleDoctorState.job
+                  ? singleDoctorState.job
+                  : "تخصص"
+              }
+            />
+            <label htmlFor="graduate">سال فارغ التحصیل</label>
             <input
               type="number"
+              id="graduate"
               onChange={e => setGraduate(e.target.value)}
               value={graduate}
               placeholder={
@@ -113,8 +155,10 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
                   : "َسال فارغ التحصیل"
               }
             />
+            <label htmlFor="experience">میزان تجربه</label>
             <input
               type="number"
+              id="experience"
               onChange={e => setExperience(e.target.value)}
               value={experience}
               placeholder={
@@ -123,8 +167,10 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
                   : "َمیزان تجربه"
               }
             />
+            <label htmlFor="doctorId">شماره نظام پزشکی</label>
             <input
               type="number"
+              id="doctorId"
               onChange={e => setDoctorId(e.target.value)}
               value={doctorId}
               placeholder={
@@ -133,7 +179,7 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
                   : "َشماره نظام پزشکی"
               }
             />
-            <label htmlFor="descreption"></label>
+            <label htmlFor="descreption">درباره دکتر</label>
             <textarea
               type="text"
               onChange={e => setDoctorDescreption(e.target.value)}

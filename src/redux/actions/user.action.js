@@ -32,7 +32,6 @@ export const getSingleDoctor = id => {
   return async dispatch => {
     try {
       const res = await axiosInstance.get(`users/doctor/${id}`);
-      console.log(res);
       dispatch({
         type: usersConstants.GET_SINGLE_DOCTOR_SUCCESS,
         payload: res.data.data,
@@ -56,7 +55,6 @@ export const updateSingleDoctor = (data, id) => {
           Authorization: token && `Bearer ${token}`,
         },
       });
-      console.log(res);
       dispatch({
         type: usersConstants.UPDATE_SINGLE_DOCTOR_SUCCESS,
       });

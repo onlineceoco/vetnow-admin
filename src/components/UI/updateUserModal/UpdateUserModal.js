@@ -3,11 +3,11 @@ import { Card, CardContent, makeStyles, Modal } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "../Alert";
-import { Close } from "@material-ui/icons";
 import {
   getSingleDoctor,
   updateSingleDoctor,
 } from "../../../redux/actions/user.action";
+import { loginConfirm } from "../../../redux/actions/auth.action";
 
 const styles = makeStyles(theme => {
   return {
@@ -70,6 +70,7 @@ const styles = makeStyles(theme => {
 function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [job, setJob] = useState("");
   const [graduate, setGraduate] = useState("");
   const [experience, setExperience] = useState("");
@@ -88,16 +89,25 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
 
   const submitHandler = e => {
     e.preventDefault();
-    const data = Object.assign(
-      {},
-      !name ? null : { name },
-      !lastName ? null : { lastName },
-      !job ? null : { job },
-      !graduate ? null : { graduate },
-      !experience ? null : { experience },
-      !doctorDescreption ? null : { doctorDescreption },
-      !doctorId ? null : { doctorId },
-    );
+    // const data = Object.assign(
+    //   {},
+    //   !name ? null : { name },
+    //   !lastName ? null : { lastName },
+    //   !job ? null : { job },
+    //   !graduate ? null : { graduate },
+    //   !experience ? null : { experience },
+    //   !doctorDescreption ? null : { doctorDescreption },
+    //   !doctorId ? null : { doctorId },
+    // );
+    const data = new FormData();
+    name && data.append("name", name);
+    lastName && data.append("lastName", lastName);
+    avatar && data.append("avatar", avatar);
+    job && data.append("job", job);
+    graduate && data.append("graduate", graduate);
+    experience && data.append("experience", experience);
+    doctorDescreption && data.append("doctorDescreption", doctorDescreption);
+    doctorId && data.append("doctorId", doctorId);
     dispatch(updateSingleDoctor(data, doctorDocId));
     closeModalHandler();
   };
@@ -107,19 +117,26 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
       <Card className={classes.card}>
         <CardContent>
           <h1>اطلاعات دکتر</h1>
-          <label htmlFor="name">نام دکتر</label>
-          <input
-            type="text"
-            id="name"
-            onChange={e => setName(e.target.value)}
-            value={name}
-            placeholder={
-              singleDoctorState && singleDoctorState.name
-                ? singleDoctorState.name
-                : "نام دکتر"
-            }
-          />
+
           <form onSubmit={submitHandler}>
+            <label htmlFor="name">نام دکتر</label>
+            <input
+              type="text"
+              id="name"
+              onChange={e => setName(e.target.value)}
+              value={name}
+              placeholder={
+                singleDoctorState && singleDoctorState.name
+                  ? singleDoctorState.name
+                  : "نام دکتر"
+              }
+            />
+            <label htmlFor="avatar">عکس پروفایل</label>
+            <input
+              type="file"
+              id="avatar"
+              onChange={e => setAvatar(e.target.files[0])}
+            />
             <label htmlFor="lastName">نام خانوادگی دکتر</label>
             <input
               type="text"

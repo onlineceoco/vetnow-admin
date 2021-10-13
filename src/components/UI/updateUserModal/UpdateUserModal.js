@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, makeStyles, Modal } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
-  import Alert from "../Alert";
+import Alert from "../Alert";
 import { Close } from "@material-ui/icons";
 import {
   getSingleDoctor,
@@ -92,6 +92,7 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
       {},
       !name ? null : { name },
       !lastName ? null : { lastName },
+      !job ? null : { job },
       !graduate ? null : { graduate },
       !experience ? null : { experience },
       !doctorDescreption ? null : { doctorDescreption },

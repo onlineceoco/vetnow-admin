@@ -14,7 +14,6 @@ function App() {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth.isAuthenticated);
 
-  const history = useHistory();
   useEffect(() => {
     if (!auth) {
       dispatch(isUserLoggedIn());

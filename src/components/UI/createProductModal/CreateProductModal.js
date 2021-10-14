@@ -211,7 +211,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                     <MenuItem value="راس 308">راس 308</MenuItem>
                     <MenuItem value="کاپ">کاپ</MenuItem>
                     <MenuItem value="هوبارد">هوبارد</MenuItem>
-                    <MenuItem value="آدین">آدین</MenuItem>
+                    <MenuItem value="آرین">آرین</MenuItem>
                     <MenuItem value="آریورا پلاس">آریورا پلاس</MenuItem>
                   </Select>
                 </FormControl>

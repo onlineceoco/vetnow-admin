@@ -212,7 +212,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                     <MenuItem value="کاپ">کاپ</MenuItem>
                     <MenuItem value="هوبارد">هوبارد</MenuItem>
                     <MenuItem value="آرین">آرین</MenuItem>
-                    <MenuItem value="آریورا پلاس">آریورا پلاس</MenuItem>
+                    <MenuItem value="آبراکرز پلاس">آبراکرز پلاس</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

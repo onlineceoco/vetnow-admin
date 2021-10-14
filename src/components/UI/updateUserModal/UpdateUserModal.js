@@ -161,16 +161,16 @@ function UpdateUserModal({ openModalHandler, closeModalHandler, doctorDocId }) {
                   : "تخصص"
               }
             />
-            <label htmlFor="graduate">سال فارغ التحصیل</label>
+            <label htmlFor="graduate">مدرک</label>
             <input
-              type="number"
+              type="text"
               id="graduate"
               onChange={e => setGraduate(e.target.value)}
               value={graduate}
               placeholder={
                 singleDoctorState && singleDoctorState.graduate
                   ? singleDoctorState.graduate
-                  : "َسال فارغ التحصیل"
+                  : "َمدرک"
               }
             />
             <label htmlFor="experience">میزان تجربه</label>

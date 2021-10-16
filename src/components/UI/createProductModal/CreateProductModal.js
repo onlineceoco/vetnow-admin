@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -347,8 +348,8 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                 </Card>
               </Grid>
             </Grid>
+
             <CardActions className={classes.confirmBtnWrapper}>
-              <LinearProgress variant="determinate" value={progress} />
               <Button
                 variant="contained"
                 color="primary"
@@ -358,6 +359,11 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                 ایجاد محصول
               </Button>
             </CardActions>
+            {progress > 0 && (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress variant="determinate" value={progress} />
+              </Box>
+            )}
           </form>
         </CardContent>
       </Card>

@@ -61,6 +61,7 @@ export const createProduct = formData => {
         payload: res.data.data,
       });
     } catch (e) {
+      console.log(e.response);
       dispatch({
         type: productConstants.CREATE_PRODUCT_FAIL,
         payload: e.response.data.message,

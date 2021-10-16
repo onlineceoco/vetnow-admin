@@ -81,7 +81,7 @@ function Products() {
             rows={rows}
             pagination="server"
             columns={columns}
-            pageSize={5}
+            pageSize={5}  
             onRowClick={(param, e) => {
               setUpdateModal(true);
               setIdForUpdateProduct(param);

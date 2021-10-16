@@ -234,8 +234,9 @@ function UpdateProductModal({
                     <MenuItem>
                       <em>-- فروشگاه</em>
                     </MenuItem>
-                    <MenuItem value="کنسانتره و مکمل">کنسانتره و مکمل</MenuItem>
-                    <MenuItem value="وان آماده">وان آماده</MenuItem>
+                    <MenuItem value="کنسانتره">مکمل</MenuItem>
+                    <MenuItem value="مکمل">کنسانتره</MenuItem>
+                    <MenuItem value="وان آماده">دان آماده</MenuItem>
                     <MenuItem value="تجهیزات پرورشی">تجهیزات پرورشی</MenuItem>
                     <MenuItem value="پرندگان زینتی">پرندگان زینتی</MenuItem>
                     <MenuItem>
@@ -244,8 +245,8 @@ function UpdateProductModal({
                     <MenuItem value="راس 308">راس 308</MenuItem>
                     <MenuItem value="کاپ">کاپ</MenuItem>
                     <MenuItem value="هوبارد">هوبارد</MenuItem>
-                    <MenuItem value="آدین">آدین</MenuItem>
-                    <MenuItem value="آریورا پلاس">آریورا پلاس</MenuItem>
+                    <MenuItem value="آرین">آرین</MenuItem>
+                    <MenuItem value="آبراکرز پلاس">آبراکرز پلاس</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -313,7 +314,7 @@ function UpdateProductModal({
                 <Grid className={classes.imagesContainer} item>
                   <Card
                     className={classes.box}
-                    variant="contained"
+                    variant="elevation"
                     component="label"
                   >
                     {imagePreview1 ? (
@@ -347,7 +348,7 @@ function UpdateProductModal({
                 <Grid item>
                   <Card
                     className={classes.box}
-                    variant="contained"
+                    variant="elevation"
                     component="label"
                   >
                     {imagePreview2 ? (
@@ -381,7 +382,7 @@ function UpdateProductModal({
                 <Grid item>
                   <Card
                     className={classes.box}
-                    variant="contained"
+                    variant="elevation"
                     component="label"
                   >
                     {imagePreview3 ? (

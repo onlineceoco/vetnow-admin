@@ -102,7 +102,6 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
   const alertState = useSelector(state => state.alert);
   const productState = useSelector(state => state.product);
   const progress = useSelector(state => state.product.progress);
-  console.log(progress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -157,10 +156,10 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                 </Paper>
               </Grid>
             </Grid>
-            {alertState.kind && (
+            {alertState.error && (
               <Alert
-                error={alertState.kind && alertState.error}
-                kind={alertState.kind && alertState.kind}
+                error={alertState.error && alertState.error}
+                kind={alertState.error && alertState.kind}
               />
             )}
             {/* row One */}
@@ -204,8 +203,8 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                     <MenuItem>
                       <em>-- فروشگاه</em>
                     </MenuItem>
-                    <MenuItem value="کنسانتره و مکمل">مکمل</MenuItem>
-                    <MenuItem value="کنسانتره و مکمل">کنسانتره </MenuItem>
+                    <MenuItem value="کنسانتره">مکمل</MenuItem>
+                    <MenuItem value="مکمل">کنسانتره</MenuItem>
                     <MenuItem value="دان آماده">دان آماده</MenuItem>
                     <MenuItem value="تجهیزات پرورشی">تجهیزات پرورشی</MenuItem>
                     <MenuItem value="پرندگان زینتی">پرندگان زینتی</MenuItem>
@@ -272,7 +271,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
               <Grid item>
                 <Card
                   className={classes.box}
-                  variant="contained"
+                  variant="elevation"
                   component="label"
                 >
                   {imagePreview1 ? (
@@ -298,7 +297,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
               <Grid item>
                 <Card
                   className={classes.box}
-                  variant="contained"
+                  variant="elevation"
                   component="label"
                 >
                   {imagePreview2 ? (
@@ -324,7 +323,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
               <Grid item>
                 <Card
                   className={classes.box}
-                  variant="contained"
+                  variant="elevation"
                   component="label"
                 >
                   {imagePreview3 ? (

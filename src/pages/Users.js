@@ -79,8 +79,12 @@ function Users() {
               users.map(user => (
                 <TableRow
                   key={user._id}
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
-                    if (user.role === "doctor") openModalHandler(user._id);
+                    if (user.role === "doctor") {
+                      console.log("clicked");
+                      openModalHandler(user._id);
+                    }
                   }}
                 >
                   <TableCell>{user.phone}</TableCell>

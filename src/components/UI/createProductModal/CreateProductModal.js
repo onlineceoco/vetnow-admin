@@ -9,6 +9,7 @@ import {
   FormControl,
   Grid,
   InputLabel,
+  LinearProgress,
   makeStyles,
   MenuItem,
   Modal,
@@ -99,6 +100,8 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
   const classes = styles();
   const alertState = useSelector(state => state.alert);
   const productState = useSelector(state => state.product);
+  const progress = useSelector(state => state.product.progress);
+  console.log(progress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -345,6 +348,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
               </Grid>
             </Grid>
             <CardActions className={classes.confirmBtnWrapper}>
+              <LinearProgress variant="determinate" value={progress} />
               <Button
                 variant="contained"
                 color="primary"

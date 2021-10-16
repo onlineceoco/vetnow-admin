@@ -2,6 +2,7 @@ import axiosInstance from "../../helpers/axios";
 import { productConstants } from "./constatns";
 import { removeAlert, showAlert } from "./alert.action";
 import axios from "axios";
+import { api } from "../../UrlConfig";
 
 export const getAllProducts = () => {
   return async dispatch => {
@@ -44,15 +45,17 @@ export const createProduct = formData => {
   return async dispatch => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(
-        "http://api.vetnow.ir/api/v1/products",
-        formData,
-        {
-          headers: {
-            Authorization: token && `Bearer ${token}`,
-          },
+      const res = await axios.post(`${api}products`, formData, {
+        headers: {
+          Authorization: token && `Bearer ${token}`,
         },
-      );
+        withCredentials: true,
+        onUploadProgress: event =>
+          dispatch({
+            type: productConstants.PRGORESS_BAR,
+            payload: Math.round((100 * event.loaded) / event.total),
+          }),
+      });
       dispatch({
         type: productConstants.CREATE_PRODUCT_SUCCESS,
         payload: res.data.data,
@@ -79,6 +82,7 @@ export const updateProduct = (formData, id) => {
           headers: {
             Authorization: token && `Bearer ${token}`,
           },
+          withCredentials: true,
         },
       );
       dispatch({
@@ -103,6 +107,7 @@ export const deleteProduct = id => {
         headers: {
           Authorization: token && `Bearer ${token}`,
         },
+        withCredentials: true,
       });
       dispatch({
         type: productConstants.DELETE_SINGEL_PRODUCT_SUCCESS,

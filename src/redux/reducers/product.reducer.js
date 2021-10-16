@@ -6,6 +6,7 @@ const initialState = {
   errors: null,
   singelProduct: null,
   done: null,
+  progress: 0,
 };
 
 const productReducer = (state = initialState, action) => {
@@ -24,8 +25,6 @@ const productReducer = (state = initialState, action) => {
         products: null,
         errors: payload,
         loading: false,
-        loading: false,
-
       });
     case productConstants.CREATE_PRODUCT_SUCCESS:
       return (state = {
@@ -33,6 +32,7 @@ const productReducer = (state = initialState, action) => {
         loading: false,
         errors: null,
         done: true,
+        progress: 0,
       });
     case productConstants.CREATE_PRODUCT_FAIL:
       return (state = {
@@ -40,6 +40,7 @@ const productReducer = (state = initialState, action) => {
         errors: payload,
         loading: false,
         done: false,
+        progress: 0,
       });
     case productConstants.UPDATE_PRODUCT_SUCCESS:
       return (state = {
@@ -89,6 +90,12 @@ const productReducer = (state = initialState, action) => {
         ...state,
         errors: null,
         loading: false,
+      });
+
+    case productConstants.PRGORESS_BAR:
+      return (state = {
+        ...state,
+        progress: payload,
       });
 
     default:

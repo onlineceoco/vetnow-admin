@@ -91,9 +91,11 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
   const [imagePreview1, setImagePreview1] = useState(null);
   const [imagePreview2, setImagePreview2] = useState(null);
   const [imagePreview3, setImagePreview3] = useState(null);
+  const [imagePreview4, setImagePreview4] = useState(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty(),
   );
@@ -114,9 +116,11 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
       setImage1(null);
       setImage2(null);
       setImage3(null);
+      setImage4(null);
       setImagePreview1(null);
       setImagePreview2(null);
       setImagePreview3(null);
+      setImagePreview4(null);
     }
   }, [productState.done]);
 
@@ -130,6 +134,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
     formData.append("images", image1);
     formData.append("images", image2);
     formData.append("images", image3);
+    formData.append("images", image4);
     formData.append("descreption", descreption);
     dispatch(createProduct(formData));
   };
@@ -342,6 +347,32 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                     onChange={e => {
                       setImage3(e.target.files[0]);
                       setImagePreview3(URL.createObjectURL(e.target.files[0]));
+                    }}
+                  />
+                </Card>
+              </Grid>
+              <Grid item>
+                <Card
+                  className={classes.box}
+                  variant="elevation"
+                  component="label"
+                >
+                  {imagePreview4 ? (
+                    <img
+                      className={classes.image}
+                      src={imagePreview4}
+                      alt={imagePreview4.name}
+                    />
+                  ) : (
+                    " کلیک برای آپلود"
+                  )}
+
+                  <input
+                    type="file"
+                    hidden
+                    onChange={e => {
+                      setImage4(e.target.files[0]);
+                      setImagePreview4(URL.createObjectURL(e.target.files[0]));
                     }}
                   />
                 </Card>

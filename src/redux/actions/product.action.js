@@ -76,16 +76,12 @@ export const updateProduct = (formData, id) => {
   return async dispatch => {
     try {
       const token = localStorage.getItem("token");
-      await axios.patch(
-        `http://api.vetnow.ir/api/v1/products/${id}`,
-        formData,
-        {
-          headers: {
-            Authorization: token && `Bearer ${token}`,
-          },
-          withCredentials: true,
+      await axios.patch(`${api}products/${id}`, formData, {
+        headers: {
+          Authorization: token && `Bearer ${token}`,
         },
-      );
+        withCredentials: true,
+      });
       dispatch({
         type: productConstants.UPDATE_PRODUCT_SUCCESS,
       });
@@ -104,7 +100,7 @@ export const deleteProduct = id => {
   return async dispatch => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://api.vetnow.ir/api/v1/products/${id}`, {
+      await axios.delete(`${api}products/${id}`, {
         headers: {
           Authorization: token && `Bearer ${token}`,
         },

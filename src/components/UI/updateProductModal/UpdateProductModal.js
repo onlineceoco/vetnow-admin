@@ -106,9 +106,11 @@ function UpdateProductModal({
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
   const [imagePreview1, setImagePreview1] = useState(null);
   const [imagePreview2, setImagePreview2] = useState(null);
   const [imagePreview3, setImagePreview3] = useState(null);
+  const [imagePreview4, setImagePreview4] = useState(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty(),
   );
@@ -129,6 +131,7 @@ function UpdateProductModal({
     setImage1(idForUpdateProduct && idForUpdateProduct.row.images[0]);
     setImage2(idForUpdateProduct && idForUpdateProduct.row.images[1]);
     setImage3(idForUpdateProduct && idForUpdateProduct.row.images[2]);
+    setImage4(idForUpdateProduct && idForUpdateProduct.row.images[3]);
   }, [openModalHandler]);
 
   useEffect(() => {
@@ -153,6 +156,7 @@ function UpdateProductModal({
     formData.append("images", image1);
     formData.append("images", image2);
     formData.append("images", image3);
+    formData.append("images", image4);
     formData.append("descreption", descreption);
     dispatch(
       updateProduct(formData, idForUpdateProduct && idForUpdateProduct.row._id),
@@ -165,6 +169,8 @@ function UpdateProductModal({
   const DeleteProductHandler = id => {
     dispatch(deleteProduct(id));
   };
+
+  console.log(idForUpdateProduct);
   const body = (
     <>
       <Card>
@@ -228,15 +234,17 @@ function UpdateProductModal({
                     </MenuItem>
                     <MenuItem value="افزودنی ها">افزودنی ها</MenuItem>
                     <MenuItem value="واکسن ها">واکسن ها</MenuItem>
+                    <MenuItem value="ویتامین ها">ویتامین ها</MenuItem>
+                    <MenuItem value="آنتی بیوتیک ها">آنتی بیوتیک ها</MenuItem>
                     <MenuItem value="ضد عفونی کننده ها">
                       ضد عفونی کننده ها
                     </MenuItem>
                     <MenuItem>
                       <em>-- فروشگاه</em>
                     </MenuItem>
-                    <MenuItem value="کنسانتره">مکمل</MenuItem>
-                    <MenuItem value="مکمل">کنسانتره</MenuItem>
-                    <MenuItem value="وان آماده">دان آماده</MenuItem>
+                    <MenuItem value="کنسانتره">کنسانتره</MenuItem>
+                    <MenuItem value="مکمل">مکمل</MenuItem>
+                    <MenuItem value="دان آماده">دان آماده</MenuItem>
                     <MenuItem value="تجهیزات پرورشی">تجهیزات پرورشی</MenuItem>
                     <MenuItem value="پرندگان زینتی">پرندگان زینتی</MenuItem>
                     <MenuItem>
@@ -407,6 +415,40 @@ function UpdateProductModal({
                       onChange={e => {
                         setImage3(e.target.files[0]);
                         setImagePreview3(
+                          URL.createObjectURL(e.target.files[0]),
+                        );
+                      }}
+                    />
+                  </Card>
+                </Grid>
+                <Grid item>
+                  <Card
+                    className={classes.box}
+                    variant="elevation"
+                    component="label"
+                  >
+                    {imagePreview4 ? (
+                      <img
+                        className={classes.image}
+                        src={imagePreview4}
+                        alt={imagePreview4.name}
+                      />
+                    ) : image4 ? (
+                      <img
+                        className={classes.image}
+                        src={`${baseUrl}/img/products/${image4}`}
+                        alt={image4}
+                      />
+                    ) : (
+                      <p>کلیک برای آپلود</p>
+                    )}
+
+                    <input
+                      type="file"
+                      hidden
+                      onChange={e => {
+                        setImage4(e.target.files[0]);
+                        setImagePreview4(
                           URL.createObjectURL(e.target.files[0]),
                         );
                       }}

@@ -81,6 +81,11 @@ export const updateProduct = (formData, id) => {
           Authorization: token && `Bearer ${token}`,
         },
         withCredentials: true,
+        onUploadProgress: event =>
+          dispatch({
+            type: productConstants.PRGORESS_BAR,
+            payload: Math.round((100 * event.loaded) / event.total),
+          }),
       });
       dispatch({
         type: productConstants.UPDATE_PRODUCT_SUCCESS,

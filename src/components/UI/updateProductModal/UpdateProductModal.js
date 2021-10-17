@@ -16,6 +16,8 @@ import {
   TextField,
   Typography,
   Paper,
+  Box,
+  LinearProgress,
 } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -121,6 +123,7 @@ function UpdateProductModal({
   const dispatch = useDispatch();
   const des = idForUpdateProduct && idForUpdateProduct.row.descreption;
   const content = ContentState.createFromText(des);
+  const progress = useSelector(state => state.product.progress);
 
   useEffect(() => {
     setName(idForUpdateProduct && idForUpdateProduct.row.name);
@@ -169,7 +172,6 @@ function UpdateProductModal({
   const DeleteProductHandler = id => {
     dispatch(deleteProduct(id));
   };
-
   console.log(idForUpdateProduct);
   const body = (
     <>
@@ -325,13 +327,7 @@ function UpdateProductModal({
                     variant="elevation"
                     component="label"
                   >
-                    {imagePreview1 ? (
-                      <img
-                        className={classes.image}
-                        src={imagePreview1}
-                        alt={imagePreview1.name}
-                      />
-                    ) : image1 ? (
+                    {image1 ? (
                       <img
                         className={classes.image}
                         src={`${baseUrl}/img/products/${image1}`}
@@ -359,13 +355,7 @@ function UpdateProductModal({
                     variant="elevation"
                     component="label"
                   >
-                    {imagePreview2 ? (
-                      <img
-                        className={classes.image}
-                        src={imagePreview2}
-                        alt={imagePreview2.name}
-                      />
-                    ) : image2 ? (
+                    {image2 ? (
                       <img
                         className={classes.image}
                         src={`${baseUrl}/img/products/${image2}`}
@@ -374,7 +364,6 @@ function UpdateProductModal({
                     ) : (
                       <p>کلیک برای آپلود</p>
                     )}
-
                     <input
                       type="file"
                       hidden
@@ -393,13 +382,7 @@ function UpdateProductModal({
                     variant="elevation"
                     component="label"
                   >
-                    {imagePreview3 ? (
-                      <img
-                        className={classes.image}
-                        src={imagePreview3}
-                        alt={imagePreview3.name}
-                      />
-                    ) : image3 ? (
+                    {image3 ? (
                       <img
                         className={classes.image}
                         src={`${baseUrl}/img/products/${image3}`}
@@ -427,13 +410,7 @@ function UpdateProductModal({
                     variant="elevation"
                     component="label"
                   >
-                    {imagePreview4 ? (
-                      <img
-                        className={classes.image}
-                        src={imagePreview4}
-                        alt={imagePreview4.name}
-                      />
-                    ) : image4 ? (
+                    {image4 ? (
                       <img
                         className={classes.image}
                         src={`${baseUrl}/img/products/${image4}`}
@@ -499,6 +476,11 @@ function UpdateProductModal({
                 به روز رسانی
               </Button>
             </CardActions>
+            {progress > 0 && (
+              <Box sx={{ width: "100%" }}>
+                <LinearProgress variant="determinate" value={progress} />
+              </Box>
+            )}
           </form>
         </CardContent>
       </Card>

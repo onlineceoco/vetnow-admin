@@ -48,6 +48,7 @@ const productReducer = (state = initialState, action) => {
         errors: null,
         loading: false,
         done: true,
+        progress: 0,
       });
     case productConstants.UPDATE_PRODUCT_FAIL:
       return (state = {

@@ -88,7 +88,7 @@ function ResponsiveDrawer(props) {
           fontSize: "2rem",
         }}
       >
-        Vetna
+        VVetnow
       </div>
       <Divider />
       <List>

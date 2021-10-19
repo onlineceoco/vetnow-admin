@@ -35,8 +35,15 @@ function Products() {
     dispatch(getAllProducts());
   }, [createModal, updateModal]);
 
+  let rows = productState.products && productState.products;
+
+  // add index for id in rows
+  rows.forEach((row, index) => {
+    return (row.index = index + 1);
+  });
+
   const columns = [
-    { field: "id", headerName: "ID", width: 150 },
+    { field: "index", headerName: "ID", width: 150 },
     {
       field: "name",
       headerName: "نام محصول",
@@ -66,8 +73,6 @@ function Products() {
       width: 200,
     },
   ];
-  const rows = productState.products && productState.products;
-
   return (
     <>
       <Layout>
@@ -81,7 +86,7 @@ function Products() {
             rows={rows}
             pagination="server"
             columns={columns}
-            pageSize={5}  
+            pageSize={5}
             onRowClick={(param, e) => {
               setUpdateModal(true);
               setIdForUpdateProduct(param);

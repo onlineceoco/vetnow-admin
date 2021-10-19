@@ -172,7 +172,6 @@ function UpdateProductModal({
   const DeleteProductHandler = id => {
     dispatch(deleteProduct(id));
   };
-  console.log(idForUpdateProduct);
   const body = (
     <>
       <Card>

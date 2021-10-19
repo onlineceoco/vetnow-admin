@@ -138,7 +138,6 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
     formData.append("descreption", descreption);
     dispatch(createProduct(formData));
   };
-
   const body = (
     <>
       <Card className={classes.card}>
@@ -208,8 +207,8 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                     <MenuItem>
                       <em>-- فروشگاه</em>
                     </MenuItem>
-                    <MenuItem value="کنسانتره">مکمل</MenuItem>
-                    <MenuItem value="مکمل">کنسانتره</MenuItem>
+                    <MenuItem value="مکمل">مکمل</MenuItem>
+                    <MenuItem value="کنسانتره">کنسانتره</MenuItem>
                     <MenuItem value="دان آماده">دان آماده</MenuItem>
                     <MenuItem value="تجهیزات پرورشی">تجهیزات پرورشی</MenuItem>
                     <MenuItem value="پرندگان زینتی">پرندگان زینتی</MenuItem>

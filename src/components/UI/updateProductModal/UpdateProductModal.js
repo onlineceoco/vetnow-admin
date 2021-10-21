@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, ContentState } from "draft-js";
+import {
+  EditorState,
+  ContentState,
+  convertFromRaw,
+  convertToRaw,
+} from "draft-js";
 import {
   Button,
   Card,
@@ -29,6 +34,7 @@ import Alert from "../Alert";
 import { baseUrl } from "../../../UrlConfig";
 import { Close, DeleteForever } from "@material-ui/icons";
 import YesOrNoDialog from "../YesOrNoDialog/YesOrNoDialog";
+import draftToHtml from "draftjs-to-html";
 
 const styles = makeStyles(theme => {
   return {
@@ -113,24 +119,33 @@ function UpdateProductModal({
   const [imagePreview2, setImagePreview2] = useState(null);
   const [imagePreview3, setImagePreview3] = useState(null);
   const [imagePreview4, setImagePreview4] = useState(null);
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty(),
+  const des = JSON.parse(
+    idForUpdateProduct && idForUpdateProduct.row.descreption
+      ? idForUpdateProduct.row.descreption
+      : null,
   );
+  const [editorState, setEditorState] = useState(des);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const descreption = editorState.getCurrentContent().getPlainText();
+  const descreption = JSON.stringify(editorState);
   const classes = styles();
   const alertState = useSelector(state => state.alert);
   const dispatch = useDispatch();
-  const des = idForUpdateProduct && idForUpdateProduct.row.descreption;
-  const content = ContentState.createFromText(des);
+
   const progress = useSelector(state => state.product.progress);
+  // useEffect(() => {
+  //   setEditorState(des);
+  // }, []);
+
+  const onContentChange = des => {
+    setEditorState(des);
+  };
 
   useEffect(() => {
     setName(idForUpdateProduct && idForUpdateProduct.row.name);
     setQuantity(idForUpdateProduct && idForUpdateProduct.row.quantity);
     setCategory(idForUpdateProduct && idForUpdateProduct.row.category);
     setPrice(idForUpdateProduct && idForUpdateProduct.row.price);
-    setEditorState(EditorState.createWithContent(content));
+    setEditorState(des);
     setImage1(idForUpdateProduct && idForUpdateProduct.row.images[0]);
     setImage2(idForUpdateProduct && idForUpdateProduct.row.images[1]);
     setImage3(idForUpdateProduct && idForUpdateProduct.row.images[2]);
@@ -145,7 +160,7 @@ function UpdateProductModal({
       setQuantity(idForUpdateProduct && idForUpdateProduct.row.quantity);
       setCategory(idForUpdateProduct && idForUpdateProduct.row.category);
       setPrice(idForUpdateProduct && idForUpdateProduct.row.price);
-      setEditorState(EditorState.createWithContent(content));
+      setEditorState(des);
     }
   }, [productState.done]);
 
@@ -297,10 +312,7 @@ function UpdateProductModal({
                   minHeight: "300px",
                 }}
               >
-                <Editor
-                  editorState={editorState}
-                  onEditorStateChange={setEditorState}
-                />
+                <Editor onContentStateChange={onContentChange} />
               </div>
             </Grid>
 

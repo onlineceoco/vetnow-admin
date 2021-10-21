@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState } from "draft-js";
 import {
   Box,
   Button,
@@ -96,10 +95,9 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
   const [imagePreview2, setImagePreview2] = useState(null);
   const [imagePreview3, setImagePreview3] = useState(null);
   const [imagePreview4, setImagePreview4] = useState(null);
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty(),
-  );
-  const descreption = editorState.getCurrentContent().getPlainText();
+  const [editorState, setEditorState] = useState({});
+  console.log(editorState);
+  const descreption = JSON.stringify(editorState);
   const classes = styles();
   const alertState = useSelector(state => state.alert);
   const productState = useSelector(state => state.product);
@@ -112,7 +110,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
       setName("");
       setQuantity("");
       setPrice("");
-      setEditorState(EditorState.createEmpty());
+      setEditorState({});
       setImage1(null);
       setImage2(null);
       setImage3(null);
@@ -261,10 +259,7 @@ function CreateProductModal({ openModalHandler, closeModalHandler }) {
                   minHeight: "300px",
                 }}
               >
-                <Editor
-                  editorState={editorState}
-                  onEditorStateChange={setEditorState}
-                />
+                <Editor onContentStateChange={setEditorState} />
               </div>
             </Grid>
 

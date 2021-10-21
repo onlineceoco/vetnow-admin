@@ -67,11 +67,6 @@ function Products() {
       sortable: false,
       width: 160,
     },
-    {
-      field: "descreption",
-      headerName: "توضیحات محصول",
-      width: 200,
-    },
   ];
   return (
     <>

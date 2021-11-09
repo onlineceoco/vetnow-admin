@@ -124,6 +124,7 @@ function UpdateProductModal({
       ? idForUpdateProduct.row.descreption
       : null,
   );
+  console.log(des);
   const [editorState, setEditorState] = useState(des);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const descreption = JSON.stringify(editorState);
@@ -132,9 +133,11 @@ function UpdateProductModal({
   const dispatch = useDispatch();
 
   const progress = useSelector(state => state.product.progress);
-  // useEffect(() => {
-  //   setEditorState(des);
-  // }, []);
+  useEffect(() => {
+    const raw = des && convertFromRaw(des);
+    console.log(raw);
+    //set state here
+  }, [openModalHandler]);
 
   const onContentChange = des => {
     setEditorState(des);
